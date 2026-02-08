@@ -17,5 +17,7 @@ Based on Unitree Go2 & NVIDIA Isaac Lab. Intergrating VLM for semantic navigatio
    # 临时设置 (当前终端有效)
    export PYTHONPATH=$HOME/workspace/IsaacLab/source:$HOME/workspace/IsaacLab/source/isaaclab_assets:$PYTHONPATH
    export DISPLAY=:0
+2. **运行脚本 使用 Isaac Lab 内置的 python 解释器运行：**
+   ```bash
    # 确保在项目根目录下
-../IsaacLab/isaaclab.sh -p src/hello_go2.py
+   ../IsaacLab/isaaclab.sh -p src/hello_go2.py
