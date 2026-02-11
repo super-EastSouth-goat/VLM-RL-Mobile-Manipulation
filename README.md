@@ -38,3 +38,35 @@ export DISPLAY=:0
 
 # 2. 运行脚本
 ../IsaacLab/isaaclab.sh -p src/move_go2.py
+
+---
+
+## 🧠 Phase 3: AI Control & Reinforcement Learning (已验证)
+
+**Goal**: Train a neural network policy (Brain) to control the Unitree Go2 robot using **PPO (Proximal Policy Optimization)** via the `rsl_rl` library.
+**目标**: 使用 PPO 算法训练神经网络策略，接管机器狗的 12 个电机控制，实现复杂地形上的鲁棒行走。
+
+### 🏋️‍♂️ Training the Agent (训练)
+
+使用 `rsl_rl` 库进行训练。建议使用无头模式 (`--headless`) 以加快训练速度。
+
+**Run Training Command:**
+```bash
+# 确保环境变量已设置 (PYTHONPATH & DISPLAY)
+export PYTHONPATH=$HOME/workspace/IsaacLab/source:$HOME/workspace/IsaacLab/source/isaaclab_assets:$PYTHONPATH
+export DISPLAY=:0
+
+# 启动训练 (Headless mode for speed)
+# Task: Isaac-Velocity-Rough-Unitree-Go2-v0
+../IsaacLab/isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task Isaac-Velocity-Rough-Unitree-Go2-v0 --headless
+
+🎮 Running the Trained Policy (推理/可视化)
+加载训练好的 checkpoint 模型并在仿真器中查看效果。
+
+⚠️ Critical Note for RTX 3060 (6GB VRAM): 由于显存限制，必须添加 --num_envs 1 参数。默认的 50 个环境会导致 PhysX OOM (Out of Memory) 崩溃。
+
+Run Play Command:
+
+Bash
+# --num_envs 1 is required to prevent VRAM crash on Laptop GPUs
+../IsaacLab/isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/play.py --task Isaac-Velocity-Rough-Unitree-Go2-v0 --num_envs 1
