@@ -70,3 +70,6 @@ Run Play Command:
 Bash
 # --num_envs 1 is required to prevent VRAM crash on Laptop GPUs
 ../IsaacLab/isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/play.py --task Isaac-Velocity-Rough-Unitree-Go2-v0 --num_envs 1
+
+
+Note: A patched version of rsl_rl_ppo_cfg.py is included in the external_configs_backup/ directory of this repo. You can overwrite the original file in IsaacLab with this one to fix the errors.
