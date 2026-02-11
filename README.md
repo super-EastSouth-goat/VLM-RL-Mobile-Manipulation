@@ -31,13 +31,13 @@ Based on Unitree Go2 & NVIDIA Isaac Lab. Intergrating VLM for semantic navigatio
 ### 🕹️ How to Run
 运行运动控制演示脚本，观察机器狗在物理地面上进行原地关节运动（Sine Wave Control）：
 
-```bash
-# 1. 设置环境变量
-export PYTHONPATH=$HOME/workspace/IsaacLab/source:$HOME/workspace/IsaacLab/source/isaaclab_assets:$PYTHONPATH
-export DISPLAY=:0
-
-# 2. 运行脚本
-../IsaacLab/isaaclab.sh -p src/move_go2.py
+  ```bash
+  # 1. 设置环境变量
+  export PYTHONPATH=$HOME/workspace/IsaacLab/source:$HOME/workspace/IsaacLab/source/isaaclab_assets:$PYTHONPATH
+  export DISPLAY=:0
+  
+  # 2. 运行脚本
+  ../IsaacLab/isaaclab.sh -p src/move_go2.py
 
 ---
 
@@ -51,14 +51,14 @@ export DISPLAY=:0
 使用 `rsl_rl` 库进行训练。建议使用无头模式 (`--headless`) 以加快训练速度。
 
 **Run Training Command:**
-```bash
-# 确保环境变量已设置 (PYTHONPATH & DISPLAY)
-export PYTHONPATH=$HOME/workspace/IsaacLab/source:$HOME/workspace/IsaacLab/source/isaaclab_assets:$PYTHONPATH
-export DISPLAY=:0
-
-# 启动训练 (Headless mode for speed)
-# Task: Isaac-Velocity-Rough-Unitree-Go2-v0
-../IsaacLab/isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task Isaac-Velocity-Rough-Unitree-Go2-v0 --headless
+  ```bash
+  #  确保环境变量已设置 (PYTHONPATH & DISPLAY)
+  export PYTHONPATH=$HOME/workspace/IsaacLab/source:$HOME/workspace/IsaacLab/source/isaaclab_assets:$PYTHONPATH
+  export DISPLAY=:0
+  
+  # 启动训练 (Headless mode for speed)
+  # Task: Isaac-Velocity-Rough-Unitree-Go2-v0
+  ../IsaacLab/isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/train.py --task Isaac-Velocity-Rough-Unitree-Go2-v0 --headless
 
 🎮 Running the Trained Policy (推理/可视化)
 加载训练好的 checkpoint 模型并在仿真器中查看效果。
@@ -67,9 +67,9 @@ export DISPLAY=:0
 
 Run Play Command:
 
-Bash
-# --num_envs 1 is required to prevent VRAM crash on Laptop GPUs
-../IsaacLab/isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/play.py --task Isaac-Velocity-Rough-Unitree-Go2-v0 --num_envs 1
+  ```Bash
+  # --num_envs 1 is required to prevent VRAM crash on Laptop GPUs
+  ../IsaacLab/isaaclab.sh -p scripts/reinforcement_learning/rsl_rl/play.py --task Isaac-Velocity-Rough-Unitree-Go2-v0 --num_envs 1
 
 
 Note: A patched version of rsl_rl_ppo_cfg.py is included in the external_configs_backup/ directory of this repo. You can overwrite the original file in IsaacLab with this one to fix the errors.
